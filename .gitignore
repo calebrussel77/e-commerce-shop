@@ -2,7 +2,7 @@
 
 # dependencies
 node_modules
-node_modules/
+frontend/node_modules
 /.pnp
 .pnp.js
 
@@ -10,7 +10,7 @@ node_modules/
 /coverage
 
 # production
-/build
+/frontend/build
 
 # idea
 .vscode

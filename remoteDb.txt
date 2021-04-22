@@ -1,0 +1,1 @@
+"DATABASE_URL":"mongodb+srv://caleb:gwendoline@cluster0.whrqj.mongodb.net/e-commerce-shop?retryWrites=true&w=majority"
