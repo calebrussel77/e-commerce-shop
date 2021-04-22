@@ -42,7 +42,7 @@ const Home = (props: any) => {
             <span>Derniers produits</span>
           </h2>
           <Link
-            to="/products"
+            to="/#"
             className="font-semibold text-pink-500 hover:underline no-underline"
           >
             Voir tous

@@ -116,12 +116,16 @@ const ProductEdit = (props: {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const responseImage = await handleImage();
-      if (responseImage) {
-        onUpdateProductData(productId, {
-          ...productData,
-          image: `${process.env.REACT_APP_BASE_URL}${responseImage}`,
-        });
+      if (!fileServer) {
+        onUpdateProductData(productId, productData);
+      } else {
+        const responseImage = await handleImage();
+        if (responseImage) {
+          onUpdateProductData(productId, {
+            ...productData,
+            image: `${process.env.REACT_APP_BASE_URL}${responseImage}`,
+          });
+        }
       }
     } catch (error) {
       console.log(error);

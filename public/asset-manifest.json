@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e2cb5f2d.chunk.css",
+    "main.js": "/static/js/main.dd6e9d97.chunk.js",
+    "main.js.map": "/static/js/main.dd6e9d97.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.248907bc.js",
+    "runtime-main.js.map": "/static/js/runtime-main.248907bc.js.map",
+    "static/js/2.43b9fc56.chunk.js": "/static/js/2.43b9fc56.chunk.js",
+    "static/js/2.43b9fc56.chunk.js.map": "/static/js/2.43b9fc56.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.e2cb5f2d.chunk.css.map": "/static/css/main.e2cb5f2d.chunk.css.map",
+    "static/js/2.43b9fc56.chunk.js.LICENSE.txt": "/static/js/2.43b9fc56.chunk.js.LICENSE.txt",
+    "static/media/Logo.18c312e6.png": "/static/media/Logo.18c312e6.png",
+    "static/media/Paypal.3344eef6.svg": "/static/media/Paypal.3344eef6.svg",
+    "static/media/Stripe.166c9620.svg": "/static/media/Stripe.166c9620.svg",
+    "static/media/svgLogin.a6182a16.svg": "/static/media/svgLogin.a6182a16.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.248907bc.js",
+    "static/js/2.43b9fc56.chunk.js",
+    "static/css/main.e2cb5f2d.chunk.css",
+    "static/js/main.dd6e9d97.chunk.js"
+  ]
+}

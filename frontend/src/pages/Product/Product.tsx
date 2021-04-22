@@ -209,14 +209,21 @@ const Product = (props: {
         </h2>
         <div className="py-10">
           {props?.productDetails?.reviews?.length === 0 && (
-            <NotFound>Aucun commentaires pour ce Produit</NotFound>
+            <NotFound>
+              Aucun commentaires pour ce produit. Soyez le premier à commenter.
+            </NotFound>
           )}
           {props?.userInfo ? (
-            <>
+            <div className="my-4">
               <ReviewForm productId={props?.match?.params?.id} />
-            </>
+            </div>
           ) : (
-            <AlertBanner />
+            <div className="my-4">
+              <AlertBanner>
+                Connectez-vous pour soumettre votre commentaire et vos
+                appréciations du produit.
+              </AlertBanner>
+            </div>
           )}
           {props.productDetails?.reviews?.length! > 0 &&
             props.productDetails?.reviews?.reverse().map((review: IReview) => {

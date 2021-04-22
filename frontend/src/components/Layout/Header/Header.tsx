@@ -62,7 +62,7 @@ const Header = (props: {
               </NavLink>
 
               <NavLink
-                to="/contact"
+                to="https://twitter.com/CalebElat"
                 className="font-medium text-gray-500 hover:text-gray-800 transition duration-150 ease-in-out"
               >
                 Contact
