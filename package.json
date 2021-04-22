@@ -4,13 +4,13 @@
   "description": "Site de commerce en ligne. Rechercher les meilleurs produits à un prix cadeau.",
   "main": "backend/dist/index.js",
   "scripts": {
-    "start": "node ./backend/dist/index.js",
+    "start":"node backend/dist/index.js",
     "dev:client": "npm start --prefix frontend",
     "dev:backend": "concurrently -k -n \"Typescript,Node\" -p \"[{name}]\" -c \"blue,green\" \"npx tsc --watch\" \"nodemon backend/dist/index.js\"",
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:client\"",
     "data:import": "node backend/dist/seeders/seeders ",
     "data:destroy": "node backend/dist/seeders/seeders -d",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false yarn install --prefix frontend && yarn run build --prefix frontend"
   },
   "author": "Caleb Russel",
   "license": "ISC",
