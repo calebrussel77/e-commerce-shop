@@ -7,7 +7,9 @@
 ## Features
 
 - Full featured shopping cart
+- Responsive design
 - Product reviews and ratings
+- Multiple images uploads using cloudinary
 - Top products carousel
 - Product pagination
 - Product search feature
@@ -22,9 +24,9 @@
 
 ## Usage
 
-### ES Modules in Node
+### Typescript for the project
 
-I have used Ecmasript 6 with typescript in the backend in this project. Be sure to have at least Node v14.6+ .
+I have used typescript in the backend and the Frontend in this project. Be sure to have at least Node v14.6+ .
 
 ### Env Variables
 
@@ -45,15 +47,18 @@ REACT_APP_BASE_URL= it isn't required for the purpose because i already have a p
 ### Install Dependencies (frontend & backend)
 
 ```
-npm install
+yarn install
 cd frontend
-npm install
+yarn install
 ```
 
 ### Run
 
 ```
 # Run frontend (:3000) & backend (:4000)
+yarn dev
+
+# Run frontend only
 yarn dev:client
 
 # Run backend only
