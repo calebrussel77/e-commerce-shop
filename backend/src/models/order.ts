@@ -5,7 +5,7 @@ import { IUser } from "./user";
 export interface IOrderItem extends Document {
   name?: string;
   qty: string;
-  image: string;
+  image: string[];
   price?: number;
   product: IProduct;
 }
@@ -51,10 +51,11 @@ const OrderSchema: Schema = new Schema(
           type: Number,
           required: true,
         },
-        image: {
-          type: String,
-          required: true,
-        },
+        image: [
+          {
+            type: String,
+          },
+        ],
         price: {
           type: Number,
           required: true,

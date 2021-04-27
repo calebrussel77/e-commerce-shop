@@ -11,7 +11,6 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const products_1 = __importDefault(require("./routes/products"));
 const users_1 = __importDefault(require("./routes/users"));
 const orders_1 = __importDefault(require("./routes/orders"));
-const uploads_1 = __importDefault(require("./routes/uploads"));
 const morgan_1 = __importDefault(require("morgan"));
 const server_1 = __importDefault(require("./server"));
 const error_1 = require("./middlewares/error");
@@ -21,8 +20,8 @@ const server = new server_1.default(process.env.PORT || "4000");
 const app = server.app;
 //declare app middlewares
 app.use(cors_1.default());
-app.use(express_1.default.json());
-app.use(express_1.default.urlencoded({ extended: false }));
+app.use(express_1.default.json({ limit: "50mb" }));
+app.use(express_1.default.urlencoded({ limit: "50mb", extended: false }));
 app.use("/uploads/images", express_1.default.static(path_1.default.join(__dirname, "../../uploads", "images")));
 app.use(express_1.default.static(path_1.default.join("public")));
 if (process.env.NODE_ENV === "development") {
@@ -33,7 +32,6 @@ app.get("/api/config/paypal", (_req, resp) => resp.send(process.env.PAYPAL_CLIEN
 app.use("/api/products", products_1.default);
 app.use("/api/users", users_1.default);
 app.use("/api/orders", orders_1.default);
-app.use("/api/uploads", uploads_1.default);
 app.use((_req, resp, _next) => {
     resp.sendFile(path_1.default.resolve(__dirname, "../../public", "index.html"));
 });

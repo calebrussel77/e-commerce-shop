@@ -16,6 +16,7 @@ exports.UserController = void 0;
 const response_1 = require("../utils/response");
 const express_validator_1 = require("express-validator");
 const bcrypt_1 = __importDefault(require("bcrypt"));
+const cloudinary_config_1 = require("../utils/cloudinary-config");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 class UserController {
     /**
@@ -178,9 +179,14 @@ class UserController {
          * @private/admin
          */
         this.updateUser = (req, resp) => __awaiter(this, void 0, void 0, function* () {
-            var _b;
+            var _b, _c;
             const userInfo = yield this.userService.findUserById((_b = req === null || req === void 0 ? void 0 : req.params) === null || _b === void 0 ? void 0 : _b.id);
+            const fileStr = (_c = req.body) === null || _c === void 0 ? void 0 : _c.image;
             if (userInfo) {
+                if (fileStr) {
+                    const newImg = yield cloudinary_config_1.cloudinaryUpload(fileStr);
+                    userInfo.image = (newImg === null || newImg === void 0 ? void 0 : newImg.secure_url) || userInfo.image;
+                }
                 userInfo.name = req.body.name || userInfo.name;
                 userInfo.email = req.body.email || userInfo.email;
                 userInfo.isAdmin = req.body.isAdmin;
@@ -221,8 +227,8 @@ class UserController {
          * @private
          */
         this.getUserProfile = (req, resp) => __awaiter(this, void 0, void 0, function* () {
-            var _c;
-            const userInfo = yield this.userService.findUserById((_c = req === null || req === void 0 ? void 0 : req.userData) === null || _c === void 0 ? void 0 : _c._id);
+            var _d;
+            const userInfo = yield this.userService.findUserById((_d = req === null || req === void 0 ? void 0 : req.userData) === null || _d === void 0 ? void 0 : _d._id);
             if (userInfo) {
                 return response_1.apiResponse(resp, response_1.successResponse({
                     msg: "Information de l'utilisateur",
@@ -242,8 +248,8 @@ class UserController {
          * @private
          */
         this.updateUserProfileInfo = (req, resp) => __awaiter(this, void 0, void 0, function* () {
-            var _d;
-            const userInfo = yield this.userService.findUserById((_d = req === null || req === void 0 ? void 0 : req.userData) === null || _d === void 0 ? void 0 : _d._id);
+            var _e;
+            const userInfo = yield this.userService.findUserById((_e = req === null || req === void 0 ? void 0 : req.userData) === null || _e === void 0 ? void 0 : _e._id);
             if (userInfo) {
                 userInfo.name = req.body.name || userInfo.name;
                 userInfo.email = req.body.email || userInfo.email;

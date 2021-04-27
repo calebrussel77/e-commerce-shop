@@ -4,7 +4,7 @@ import { IUser } from "./user";
 
 export interface IProduct extends Document {
   name: string;
-  image: string;
+  image: string[];
   description: string;
   brand: string;
   category: string;
@@ -21,7 +21,7 @@ export interface IProduct extends Document {
 const ProductSchema: Schema = new Schema(
   {
     name: { type: String, required: true },
-    image: { type: String, required: true },
+    image: [{ type: String }],
     description: { type: String, required: true },
     brand: { type: String, required: true },
     category: { type: String, required: true },

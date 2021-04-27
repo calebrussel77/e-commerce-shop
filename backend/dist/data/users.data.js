@@ -8,13 +8,13 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const users = [
     {
         name: "Caleb Russel",
-        email: "calebrussel@fr.fr",
+        email: "admin@test.fr",
         password: bcrypt_1.default.hashSync("123456", 10),
         isAdmin: true,
     },
     {
         name: "John Doe",
-        email: "john@fr.fr",
+        email: "john@test.fr",
         city: "Freemont street",
         state: "Californie",
         zipCode: "2345 Las vegas",
@@ -23,7 +23,7 @@ const users = [
     },
     {
         name: "Jane Doe",
-        email: "jane@fr.fr",
+        email: "jane@test.fr",
         city: "Freemont street",
         state: "Californie",
         zipCode: "2345 Las vegas",

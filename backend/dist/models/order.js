@@ -32,10 +32,11 @@ const OrderSchema = new mongoose_1.Schema({
                 type: Number,
                 required: true,
             },
-            image: {
-                type: String,
-                required: true,
-            },
+            image: [
+                {
+                    type: String,
+                },
+            ],
             price: {
                 type: Number,
                 required: true,

@@ -7,7 +7,6 @@ import mongoose from "mongoose";
 import productsRoutes from "./routes/products";
 import usersRoutes from "./routes/users";
 import ordersRoutes from "./routes/orders";
-import uploadsRoutes from "./routes/uploads";
 import morgan from "morgan";
 
 import Server from "./server";
@@ -21,8 +20,8 @@ const app = server.app;
 
 //declare app middlewares
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: false }));
 app.use(
   "/uploads/images",
   express.static(path.join(__dirname, "../../uploads", "images"))
@@ -39,7 +38,6 @@ app.get("/api/config/paypal", (_req: Request, resp: Response) =>
 app.use("/api/products", productsRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/orders", ordersRoutes);
-app.use("/api/uploads", uploadsRoutes);
 
 app.use((_req, resp, _next) => {
   resp.sendFile(path.resolve(__dirname, "../../public", "index.html"));

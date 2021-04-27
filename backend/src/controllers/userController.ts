@@ -3,6 +3,8 @@ import { UserService } from "../services";
 import { apiResponse, successResponse } from "../utils/response";
 import { validationResult } from "express-validator";
 import bcrypt from "bcrypt";
+import cloudinary, { cloudinaryUpload } from "../utils/cloudinary-config";
+
 import { IRequest, ISignInCredentials } from "../types/types";
 import jwt from "jsonwebtoken";
 
@@ -223,8 +225,14 @@ export class UserController {
    */
   public updateUser = async (req: IRequest, resp: Response) => {
     const userInfo = await this.userService.findUserById(req?.params?.id);
+    const fileStr = req.body?.image;
 
     if (userInfo) {
+      if (fileStr) {
+        const newImg = await cloudinaryUpload(fileStr);
+        userInfo.image = newImg?.secure_url || userInfo.image;
+      }
+
       userInfo.name = req.body.name || userInfo.name;
       userInfo.email = req.body.email || userInfo.email;
       userInfo.isAdmin = req.body.isAdmin;

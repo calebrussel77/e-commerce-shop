@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { ProductService } from "../services";
 import { IRequest } from "../types/types";
 import { apiResponse, successResponse } from "../utils/response";
+import { cloudinaryUpload } from "../utils/cloudinary-config";
 
 export class ProductController {
   /**
@@ -259,12 +260,18 @@ export class ProductController {
     resp: Response
   ): Promise<Response> => {
     const productId = req.params.productId;
+    const files = req.body?.image;
 
     const productFound = await this.productService.getProductById(productId);
 
     if (productFound) {
+      if (files) {
+        for (const file of files) {
+          const newImg = await cloudinaryUpload(file);
+          productFound.image.push(newImg.secure_url);
+        }
+      }
       productFound.name = req.body.name || productFound.name;
-      productFound.image = req.body.image || productFound.image;
       productFound.price = req.body.price || productFound.price;
       productFound.brand = req.body.brand || productFound.brand;
       productFound.description =

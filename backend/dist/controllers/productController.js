@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductController = void 0;
 const response_1 = require("../utils/response");
+const cloudinary_config_1 = require("../utils/cloudinary-config");
 class ProductController {
     /**
      * @description Creates an instance of product controller.
@@ -172,11 +173,18 @@ class ProductController {
          * @private/admin
          */
         this.updateProduct = (req, resp) => __awaiter(this, void 0, void 0, function* () {
+            var _g;
             const productId = req.params.productId;
+            const files = (_g = req.body) === null || _g === void 0 ? void 0 : _g.image;
             const productFound = yield this.productService.getProductById(productId);
             if (productFound) {
+                if (files) {
+                    for (const file of files) {
+                        const newImg = yield cloudinary_config_1.cloudinaryUpload(file);
+                        productFound.image.push(newImg.secure_url);
+                    }
+                }
                 productFound.name = req.body.name || productFound.name;
-                productFound.image = req.body.image || productFound.image;
                 productFound.price = req.body.price || productFound.price;
                 productFound.brand = req.body.brand || productFound.brand;
                 productFound.description =
