@@ -2,7 +2,7 @@
 
 > eCommerce platform built with the React + Typescript & NodeJs + Typescript & Redux.
 
-![screenshot](https://e-shop-commerce-app.herokuapp.com/images/E-commerce-shop-Capture.PNG)
+![screenshot](public/images/E-commerce-shop-Capture.PNG?raw=true "e-commerce shop capture")
 
 ## Features
 
